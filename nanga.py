@@ -132,7 +132,10 @@ def get_spec_2(soup):
     return spec_table
 
 
-def get_meta_data(url, soup):
+def get_meta_data(driver, url):
+    driver.get(url)
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'lxml')
     try:
         title = get_title(soup)
     except:
